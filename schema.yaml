@@ -1,0 +1,123 @@
+openapi: 3.0.1
+info:
+  title: User service
+  description: >-
+    Small user management service
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: users
+paths:
+  /users:
+    post:
+      tags:
+        - users
+      summary: Create user
+      operationId: createUser
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200': Success
+          content: {}
+    get:
+      tags:
+        - users
+      summary: Get users
+      operationId: getUsers
+      parameters:
+        - name: id
+          in: query
+          description: User id
+          required: false
+          schema:
+            type: string
+        - name: firstName
+          in: query
+          description: User first name
+          required: false
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: User last name
+          required: false
+          schema:
+            type: string
+        - name: age
+          in: query
+          description: User age
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success
+          content: {}
+    patch:
+      tags:
+        - users
+      summary: Update user
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: query
+          description: User id
+          required: false
+          schema:
+            type: string
+        - name: firstName
+          in: query
+          description: User first name
+          required: false
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: User last name
+          required: false
+          schema:
+            type: string
+      responses:
+        '200'
+          description: Success
+          content: {}
+    delete:
+      tags:
+        - users
+      summary: Delete users
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: query
+          description: User id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content: {}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: integer
+      xml:
+        name: User

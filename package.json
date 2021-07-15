@@ -1,0 +1,40 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "description": "Small user management service",
+  "main": "build",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "dev": "NODE_ENV=development ts-node-dev src/index.ts",
+    "lint": "tslint 'src/**/**.ts'",
+    "start": "ts-node -c tsconfig.json src/index.ts",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "db:drop": "npm run typeorm schema:drop",
+    "test": "jest"
+  },
+  "author": "ANODA",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^8.0.29",
+    "jest": "^27.0.6",
+    "serverless-plugin-typescript": "^1.1.9",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
+    "ts-node-dev": "^1.1.8",
+    "tslint": "^6.1.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0",
+    "mysql": "^2.18.1",
+    "query-string": "^7.0.1",
+    "reflect-metadata": "^0.1.10",
+    "serverless-http": "^2.7.0",
+    "sqlite3": "^5.0.2",
+    "typeorm": "0.2.34",
+    "typescript": "^4.3.5"
+  }
+}

@@ -1,0 +1,16 @@
+service: users-service
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: src/index.handler
+    events:
+      - http: ANY /
+
+plugins:
+  - serverless-plugin-typescript
